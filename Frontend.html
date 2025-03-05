@@ -1,0 +1,11 @@
+<textarea id="codeEditor"></textarea>
+<button onclick="deployCode()">Deploy</button>
+<script>
+  function deployCode() {
+    fetch('/deploy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code: document.getElementById('codeEditor').value })
+    }).then(res => res.json()).then(console.log);
+  }
+</script>
